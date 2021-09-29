@@ -1,0 +1,7 @@
+#
+*.log
+*.pid
+tmp/
+coverage/
+log/
+/config/master.key

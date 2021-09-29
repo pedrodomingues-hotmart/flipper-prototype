@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  simple.api.local:
+    container_name: simple-api
+    build: ./apps/simple-api
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./apps/simple-api:/app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - postgres.local
+
+  postgres.local:
+    container_name: pg-database
+    image: postgres
+    volumes:
+      - pg-database:/var/lib/postgresql/data
+    env_file:
+      - ./config/database.env
+
+volumes:
+  pg-database:

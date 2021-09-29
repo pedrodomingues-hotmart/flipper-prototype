@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: postgres.local
+  username: simple-api
+  password: simple-api
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: simple_api_development
+
+test:
+  <<: *default
+  database: simple_api_test
